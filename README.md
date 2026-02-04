@@ -50,23 +50,27 @@ ethiopia-fi-forecast/
    pip install -r requirements.txt
    ```
 
-## Usage
-
-### 1. Data Analysis
-Open the core analysis notebook to explore the current financial inclusion landscape:
+### 2. Interactive Dashboard
+Launch the simplified Streamlit dashboard:
 ```bash
-jupyter notebook notebooks/financial_inclusion_analysis.ipynb
+cd dashboard
+streamlit run app.py
 ```
 
+**Features:**
+- **Overview**: Key metrics, P2P/ATM crossover, growth charts
+- **Trends**: Interactive time series with filtering
+- **Forecasts**: Predictions with confidence intervals
+- **Projections**: Scenario analysis and target tracking
 
-### 2. Run Tests
-Verify the environment and code integrity:
+### 3. Run Tests
 ```bash
-python -m unittest tests/simple_test.py
+python -m pytest tests/test_forecast_utils.py -v
 ```
 
 ## Contributing
-For contributions, please fork the repository, create a new branch, and submit a Pull Request. Ensure all tests pass before submission.
+For contributions, please fork the repository, create a new branch, and submit a Pull Request.
+ Ensure all tests pass before submission.
 
 
 
