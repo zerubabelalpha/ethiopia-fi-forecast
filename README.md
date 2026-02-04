@@ -1,32 +1,37 @@
 # Ethiopia Financial Inclusion Forecasting System
 
-
 ## Overview
-This repository contains the development and analysis of a **Financial Inclusion Forecasting System for Ethiopia**. This project aims to provide deep insights into the drivers of financial inclusion and predict future rates for **Access** (Account Ownership) and **Usage** (Digital Payment Adoption) for the period 2025-2027.
+This repository contains a comprehensive **Financial Inclusion Forecasting System for Ethiopia**. It provides data-driven insights into the drivers of financial inclusion and predicts future rates for **Access** (Account Ownership) and **Usage** (Digital Payment Adoption) for the period 2025-2030.
 
+The system uses historical data from Global Findex, EthSwitch, and Telebirr, combined with evidence-based impact modeling of policy events (e.g., Telebirr launch, Fayda Digital ID, EthioPay interoperability).
 
 ## Key Features
-*   **Data Enrichment:** Integrates NBE stability reports, operator data, and policy event logs.
-*   **EDA Notebook:** Detailed Exploratory Data Analysis mapping the "Access-Usage" gap.
-*   **Automated Results Extraction:** Script to programmatically extract insights from Jupyter notebooks.
-*   **Reporting:** Comprehensive blog-style analysis reports for stakeholders.
-*   **CI/CD:** Automated testing via GitHub Actions.
+*   **Data Enrichment:** Integrated NBE stability reports, operator data, and policy event logs.
+*   **Impact Analysis:** Modeled the effect of key events on financial indicators using linear and log-linear approaches.
+*   **Predictive Modeling:** Trend-augmented and event-augmented forecasting with 95% confidence intervals.
+*   **Scenario Analysis:** Optimistic, Base, and Pessimistic projections based on policy implementation.
+*   **Interactive Dashboard:** Streamlit-powered visualization tool for stakeholder exploration.
+*   **CI/CD:** Automated testing suite via GitHub Actions.
 
-##  Project Structure
+## Project Structure
 ```text
 ethiopia-fi-forecast/
-├── .github/workflows/       # CI/CD pipelines (Unittests)
+├── dashboard/               # Interactive Streamlit Application
+│   └── app.py               # Simplified single-file dashboard
 ├── data/
-│   └── raw/                 # Enriched unified dataset (CSV)
-├── notebooks/
-│   └── financial_inclusion_analysis.ipynb  # Core EDA & Visualization
-├── reports/
-│   └── REPORT.md            # Comprehensive sector report
-├── scripts/
-│   ├── extract_notebook_results.py # Data extraction utility
-│   └── simple_test.py       # Dependency & module verification
-├── tests/
-│   └── simple_test.py       # Unit testing suite
+│   ├── raw/                 # Enriched unified dataset and reference codes
+│   └── processed/           # Generated forecast results (CSV)
+├── notebooks/               # Analysis and modeling notebooks
+│   ├── data_exploration.ipynb
+│   ├── financial_inclusion_analysis.ipynb
+│   ├── event_indicator_impact_analysis.ipynb
+│   └── financial_inclusion_forecast.ipynb
+├── reports/                 # Analysis reports and visualizations
+├── scripts/                 # Utility scripts for data extraction
+├── src/                     # Core model and forecast logic
+│   ├── impact_model_utils.py # Impact modeling functions
+│   └── forecast_utils.py     # Forecasting and trend logic
+├── tests/                   # Unit test suite
 ├── requirements.txt         # Project dependencies
 └── README.md                # Project documentation
 ```
@@ -39,38 +44,35 @@ ethiopia-fi-forecast/
    cd ethiopia-fi-forecast
    ```
 
-2. **Create a virtual environment (optional but recommended):**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-
-3. **Install dependencies:**
+2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-### 2. Interactive Dashboard
-Launch the simplified Streamlit dashboard:
+## Usage
+
+### 1. Interactive Dashboard
+Launch the Streamlit dashboard to explore data, trends, and forecasts:
 ```bash
 cd dashboard
 streamlit run app.py
 ```
 
-**Features:**
-- **Overview**: Key metrics, P2P/ATM crossover, growth charts
-- **Trends**: Interactive time series with filtering
-- **Forecasts**: Predictions with confidence intervals
-- **Projections**: Scenario analysis and target tracking
+### 2. Analysis Notebooks
+Explore the modeling process sequentially:
+- Start with `notebooks/financial_inclusion_analysis.ipynb` for EDA.
+- See `notebooks/event_indicator_impact_analysis.ipynb` for impact estimates.
+- Run `notebooks/financial_inclusion_forecast.ipynb` to update projections.
 
 ### 3. Run Tests
+Verify the code integrity:
 ```bash
+python -m pytest tests/test_impact_model_utils.py -v
 python -m pytest tests/test_forecast_utils.py -v
 ```
 
 ## Contributing
-For contributions, please fork the repository, create a new branch, and submit a Pull Request.
- Ensure all tests pass before submission.
+Professional contributions are welcome. Please fork the repository, create a branch, and ensure all unit tests pass before submitting a Pull Request.
 
 
 
