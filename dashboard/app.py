@@ -28,7 +28,7 @@ def load_data():
     
     # Extract events
     events = df[df['record_type'] == 'event'].copy()
-    events['event_date'] = pd.to_datetime(events['event_date'])
+    events['event_date'] = pd.to_datetime(events['observation_date'])
     
     # Load forecast if exists
     try:
